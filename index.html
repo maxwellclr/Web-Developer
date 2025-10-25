@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Maxwell Clemente | Web Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Web developer especializado em HTML, CSS, JavaScript e PHP.">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/73131e96fb.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* ---------- BASE ---------- */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0c0c0c;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      overflow-x: hidden;  /* Oculta apenas o scrollbar horizontal */
+      overflow-y: auto;
+    }
+
+    /* ---------- SCROLLBAR PERSONALIZADA ---------- */
+    /* Navegadores baseados em WebKit (Chrome, Edge, Safari) */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0c0c0c;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #00f7ff, #007bff);
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00f7ff;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #00e0ff, #0066ff);
+    }
+
+    /* Firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #00f7ff #0c0c0c;
+    }
+
+    /* ---------- GLOW BACKGROUND ---------- */
+    #glow-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+    .glow {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(0, 255, 255, 0.6);
+      border-radius: 50%;
+      box-shadow: 0 0 10px 5px rgba(0, 255, 255, 0.3);
+      pointer-events: none;
+    }
+
+    /* ---------- CURSOR CUSTOMIZADO ---------- */
+    #cursor {
+      position: fixed;
+      top: 0; left: 0;
+      width: 20px; height: 20px;
+      border: 2px solid #00f7ff;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out, width 0.2s, height 0.2s;
+      z-index: 9999;
+    }
+
+/* ---------- SCROLL INDICATOR dentro do header ---------- */
+.scroll-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem; /* distância entre o <p> e a seta */
+  font-size: 3rem;
+  color: #00f7ff;
+  cursor: pointer;
+  text-shadow: 0 0 10px #00f7ff, 0 0 25px #00f7ff;
+  animation: bounceGlow 2s infinite;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.scroll-indicator:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+/* Animação de brilho e salto */
+@keyframes bounceGlow {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+    text-shadow: 0 0 10px #00f7ff, 0 0 25px #00f7ff;
+  }
+  40% {
+    transform: translateY(10px);
+    text-shadow: 0 0 20px #00f7ff, 0 0 40px #00f7ff;
+  }
+  60% {
+    transform: translateY(5px);
+    text-shadow: 0 0 15px #00f7ff, 0 0 30px #00f7ff;
+  }
+}
+
+    /* ---------- HERO ---------- */
+    .hero {
+      text-align: center;
+      padding: 1rem 1rem;
+      z-index: 1;
+      position: relative;
+      animation: fadeInUp 1s ease-out forwards;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      color: #00f7ff;
+      text-shadow: 0 0 10px #00f7ff, 0 0 20px #00f7ff, 0 0 30px #00f7ff;
+      animation: glowPulse 2s infinite alternate;
+    }
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 10px #00f7ff; }
+      to { text-shadow: 0 0 30px #00f7ff, 0 0 60px #00f7ff; }
+    }
+
+    .hero .lead {
+      font-weight: 300;
+      color: #ccc;
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      box-shadow: 0 0 10px rgba(0, 204, 255, 0.3);
+      margin-bottom: 15px;
+      margin-top: 15px;
+    }
+
+    /* ---------- SOCIAL LINKS ---------- */
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 3rem;
+      animation: fadeInUp 1.5s ease-out forwards;
+    }
+    .socials a {
+      color: #00f7ff;
+      font-size: 1.6rem;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .socials a:hover {
+      color: #fff;
+      transform: scale(1.2);
+    }
+    .cv{
+      display: flex;
+      justify-content: center;
+    }
+    /* ---------- ABOUT ---------- */
+    .about {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem auto;
+      z-index: 1;
+      position: relative;
+      animation: fadeInUp 2s ease-out forwards;
+    }
+    .about h2 {
+      color: #00f7ff;
+      margin-bottom: 1rem;
+    }
+    .about p {
+      color: #ccc;
+    }
+
+    /* ---------- PROJECTS ---------- */
+    .projects {
+      z-index: 1;
+      position: relative;
+      padding: 2rem 1rem;
+      animation: fadeInUp 2.5s ease-out forwards;
+    }
+    .project-card {
+      background: #1a1a1a;
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 204, 255, 0.3);
+    }
+    .project-card .card-title,
+    .project-card .card-text {
+      color: #fff;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
+      z-index: 1;
+      position: relative;
+      animation: fadeInUp 3s ease-out forwards;
+    }
+
+    /* ---------- ANIMAÇÕES ---------- */
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Cursor -->
+  <div id="cursor"></div>
+
+  <!-- Glow Background -->
+  <div id="glow-container"></div>
+
+  <!-- Hero -->
+  <header class="hero">
+    <img src="imagens/Profile.jpg" alt="Foto de perfil de Maxwell Clemente" class="profile-img">
+    <h1 class="fw-bold">Maxwell Clemente</h1>
+    <p class="lead">Web Developer</p>
+  </header>
+
+  <!-- Sobre Mim -->
+  <section class="about container">
+    <!-- Social Links -->
+  <div class="socials" aria-label="Redes sociais">
+    <a href="https://github.com/seuuser" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/seulinkedin" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:seuemail@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+  </div>
+    <h2>Projetos</h2>
+    <p class="lead">
+      Verifique as Tecnologias abaixo.
+    </p>
+    <!-- Indicador de rolagem -->
+    <div class="scroll-indicator mt-5" onclick="scrollToSection('.projects')" aria-label="Rolar para baixo">
+      <i class="fas fa-angle-down"></i>
+    </div>
+  </section>
+  <!-- Projetos -->
+  <section class="projects container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card project-card h-100">
+          <img src="imagens/index_maxsanfona.jpg" class="card-img-top" alt="Projeto Max Sanfona">
+          <div class="card-body text-center">
+            <h5 class="card-title">Max Sanfona - Blog & Landing Pages</h5>
+            <p class="card-text">Site pessoal com blog e páginas de apresentação, desenvolvido em HTML5, CSS e JavaScript puro.</p>
+          </div>
+          <div class="card-footer text-center">
+            <a href="https://github.com/seuuser/maxsanfona" target="_blank" class="btn btn-outline-light btn-sm me-2">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://maxsanfona.com" target="_blank" class="btn btn-outline-info btn-sm">
+              <i class="fas fa-external-link-alt"></i> Site
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card project-card h-100">
+          <img src="imagens/index_visioria.jpg" class="card-img-top" alt="Projeto Visioria Website">
+          <div class="card-body text-center">
+            <h5 class="card-title">Visioria - Website Institucional</h5>
+            <p class="card-text">Plataforma empresarial com front-end em HTML5, Bootstrap e JavaScript, integrada a um back-end em PHP.</p>
+          </div>
+          <div class="card-footer text-center">
+            <a href="https://github.com/seuuser/visioria" target="_blank" class="btn btn-outline-light btn-sm me-2">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://visioria.com" target="_blank" class="btn btn-outline-info btn-sm">
+              <i class="fas fa-external-link-alt"></i> Site
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card project-card h-100">
+          <img src="imagens/dashboard_visioria.jpg" class="card-img-top" alt="Projeto Visioria Dashboard">
+          <div class="card-body text-center">
+            <h5 class="card-title">Visioria Dashboard - Painel Administrativo</h5>
+            <p class="card-text">Painel administrativo desenvolvido em PHP e Bootstrap, com manipulação de dados em JSON e interatividade em JavaScript.</p>
+          </div>
+          <div class="card-footer text-center">
+            <a href="https://github.com/seuuser/visioria-dashboard" target="_blank" class="btn btn-outline-light btn-sm me-2">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://visioria.com/dashboard" target="_blank" class="btn btn-outline-info btn-sm">
+              <i class="fas fa-external-link-alt"></i> Site
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <div class="cv">
+    <a href="curriculo.pdf" class="btn btn-info btn-lg mt-3" download>
+      <i class="fas fa-download"></i> Baixar Currículo
+    </a></div>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2020 - <script>document.write(new Date().getFullYear())</script> Maxwell Clemente</p>
+  </footer>
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Cursor e Glow Script -->
+  <script>
+    /* Cursor interativo */
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
+    document.querySelectorAll("a, button").forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        cursor.style.width = "40px";
+        cursor.style.height = "40px";
+      });
+      el.addEventListener("mouseleave", () => {
+        cursor.style.width = "20px";
+        cursor.style.height = "20px";
+      });
+    });
+
+    /* Fundo Glow */
+  const numberOfGlows = 120; // Número de partículas (ajuste se quiser mais/menos)
+  const glows = [];
+  let centerX = window.innerWidth / 2;
+  let centerY = window.innerHeight / 2;
+
+  // Função para gerar número aleatório
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  // Função para criar uma partícula (glow)
+  function createGlow() {
+    const glow = document.createElement('div');
+    glow.classList.add('glow');
+
+    // Distribui os glows por toda a altura da página
+    const documentHeight = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      window.innerHeight
+    );
+
+    glow.style.left = `${random(-100, window.innerWidth + 100)}px`;
+    glow.style.top = `${random(-100, documentHeight + 100)}px`;
+
+    // Adiciona dentro do container fixo
+    document.getElementById("glow-container").appendChild(glow);
+    return glow;
+  }
+
+  // Função para animar os glows
+  function animateGlow(glow) {
+    const duration = random(6, 14);
+    const endX = random(-30, 30);
+    const endY = random(80, 180);
+
+    requestAnimationFrame(() => {
+      glow.style.transition = `transform ${duration}s ease-in-out`;
+      const currentTransform = getComputedStyle(glow).transform;
+      const matrix = new DOMMatrix(currentTransform);
+      let newX = matrix.m41 + endX;
+      let newY = matrix.m42 + endY;
+
+      // Reposiciona partículas que saem da área visível total
+      const documentHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        window.innerHeight
+      );
+
+      if (parseFloat(glow.style.left) + newX < -100) {
+        newX = window.innerWidth + 100 - parseFloat(glow.style.left);
+      }
+      if (parseFloat(glow.style.left) + newX > window.innerWidth + 100) {
+        newX = -100 - parseFloat(glow.style.left);
+      }
+      if (parseFloat(glow.style.top) + newY > documentHeight + 100) {
+        glow.style.top = `${-100}px`; // Reinicia acima do topo total da página
+        newY = 0;
+      }
+
+      glow.style.transform = `translate(${newX}px, ${newY}px)`;
+    });
+
+    glow.addEventListener("transitionend", () => animateGlow(glow), { once: true });
+  }
+
+  // Cria e inicia todas as partículas
+  for (let i = 0; i < numberOfGlows; i++) {
+    const glow = createGlow();
+    glows.push(glow);
+    animateGlow(glow);
+  }
+
+  // Movimento leve conforme o mouse
+  function moveGlows(event) {
+    const deltaX = event.clientX - centerX;
+    const deltaY = event.clientY - centerY;
+    centerX = event.clientX;
+    centerY = event.clientY;
+
+    glows.forEach(glow => {
+      const currentLeft = parseFloat(glow.style.left);
+      const currentTop = parseFloat(glow.style.top);
+      glow.style.left = `${currentLeft + deltaX * 0.15}px`;
+      glow.style.top = `${currentTop + deltaY * 0.15}px`;
+    });
+  }
+
+  // Eventos de movimento
+  window.addEventListener("mousemove", moveGlows);
+  window.addEventListener("touchmove", (event) => {
+    const touch = event.touches[0];
+    moveGlows(touch);
+  });
+
+  // Atualiza posições se a janela for redimensionada
+  window.addEventListener("resize", () => {
+    glows.forEach(glow => {
+      glow.style.left = `${random(-100, window.innerWidth + 100)}px`;
+    });
+  });
+  </script>
+  <!--indicador rolagem-->
+  <script>
+    function scrollToSection(selector) {
+      const target = document.querySelector(selector);
+      if (target) target.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+
+
+</body>
+</html>
